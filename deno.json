@@ -1,0 +1,12 @@
+{
+  "version": "0.1.0",
+  "tasks": {
+    "dev": "vite",
+    "build": "deno run -A npm:vite build",
+    "preview": "vite preview"
+  },
+  "nodeModulesDir": "auto",
+  "imports": {
+    "vite": "npm:vite@^8.3.5"
+  }
+}

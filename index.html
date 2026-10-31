@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07101d" />
+    <meta
+      name="description"
+      content="Interactive browser simulations for exploring audio, signals, and physical systems."
+    />
+    <title>Simulation Lab</title>
+    <link rel="stylesheet" href="/common/base.css" />
+    <link rel="stylesheet" href="/common/hub.css" />
+  </head>
+  <body>
+    <main class="hub">
+      <header class="hub-header">
+        <a class="wordmark" href="./">Simulation Lab</a>
+        <span class="header-note">Interactive experiments</span>
+      </header>
+      <section class="intro">
+        <p class="eyebrow">Learn math and physics by experimenting</p>
+        <h1>Explore the ideas behind the simulations.</h1>
+        <p class="intro-copy">
+          Connect equations and algorithms to things you can see and control.
+          Choose a learning exploration to get started.
+        </p>
+      </section>
+      <section class="simulations" aria-label="Available simulations">
+        <a class="simulation-card audio-card" href="./audio-fft/">
+          <div class="card-icon" aria-hidden="true">∿</div>
+          <div class="card-content">
+            <p class="card-category">Math · Signals · Fourier analysis</p>
+            <h2>Audio FFT Playground</h2>
+            <p>
+              Learn how the DFT turns sampled audio into frequency information,
+              then explore the radix-2 Cooley–Tukey FFT by comparing custom and
+              native spectra.
+            </p>
+          </div>
+          <span
+            class="card-action">Open simulation <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="simulation-card spring-card" href="./spring/">
+          <div class="card-icon" aria-hidden="true">↝</div>
+          <div class="card-content">
+            <p class="card-category">Physics · Differential equations · Numerics</p>
+            <h2>Spring Simulation</h2>
+            <p>
+              Explore the damped-spring equation and compare its analytical
+              solution with Euler and fourth-order Runge–Kutta (RK4) methods.
+            </p>
+          </div>
+          <span
+            class="card-action">Open simulation <span aria-hidden="true">↗</span></span>
+        </a>
+      </section>
+      <footer
+        class="hub-footer">More topics and explorations will be added over time.</footer>
+    </main>
+  </body>
+</html>

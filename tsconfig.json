@@ -1,0 +1,3 @@
+{
+  "include": ["*.d.ts", "common", "audio-fft", "spring"]
+}

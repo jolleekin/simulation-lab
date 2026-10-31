@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08111f" />
+    <title>Audio FFT Playground · Simulation Lab</title>
+  </head>
+  <body>
+    <div id="app">
+      <main class="layout">
+        <aside class="panel controls">
+          <section>
+            <div class="section-title">Oscillator input</div>
+            <div id="oscillatorRows"></div>
+            <button id="addOscillatorBtn" class="secondary"
+              type="button">Add oscillator</button>
+            <button id="startBtn" class="primary"
+              type="button">Start oscillators</button>
+            <button id="stopBtn" class="secondary" type="button"
+              disabled>Stop</button>
+            <p class="hint"
+              id="inputHint">Frequency is in hertz; gain is a linear amplitude from 0 to 1.</p>
+          </section>
+          <section>
+            <div class="section-title">DFT / FFT settings</div>
+            <label class="field">FFT size
+              <select id="fftSize">
+                <option value="512">512</option>
+                <option value="1024">1024</option>
+                <option value="2048" selected>2048</option>
+                <option value="4096">4096</option>
+              </select>
+            </label>
+            <label class="field">Display range
+              <select id="range">
+                <option value="0">0–Nyquist (linear)</option>
+                <option value="1" selected>20 Hz–20 kHz (log)</option>
+              </select>
+            </label>
+            <div
+              class="metric"><span>Sample rate</span><strong id="sampleRate">—</strong></div>
+            <div
+              class="metric"><span>Bin spacing</span><strong id="binSpacing">—</strong></div>
+          </section>
+          <section>
+            <div class="section-title">Audio monitoring</div>
+            <p
+              class="hint">The app starts muted. Enable audio monitoring only if you want to hear the oscillator mix through your speakers/headphones.</p>
+            <label
+              class="toggle"><input id="monitorEnabled" type="checkbox"> <span>Monitor audio output</span></label>
+          </section>
+        </aside>
+        <div class="content">
+          <section class="panel chart-panel">
+            <div
+              class="panel-heading"><div><h2>Live waveform</h2><p>Recent oscillator samples · time domain</p></div><span class="pill" id="waveState">Waiting for input</span></div>
+            <canvas id="waveCanvas" class="wave"></canvas>
+          </section>
+          <div class="spectra">
+            <section class="panel chart-panel">
+              <div
+                class="panel-heading"><div><h2>Native FFT</h2><p>Web Audio API · AnalyserNode</p></div><span class="legend native">Native</span></div>
+              <canvas id="nativeCanvas" class="spectrum"></canvas>
+            </section>
+            <section class="panel chart-panel">
+              <div
+                class="panel-heading"><div><h2>Custom FFT</h2><p>TypeScript · radix-2 Cooley–Tukey</p></div><span class="legend custom">Custom</span></div>
+              <canvas id="customCanvas" class="spectrum"></canvas>
+            </section>
+          </div>
+          <section class="panel compare">
+            <div>
+              <h2>Compare implementations</h2>
+              <p>Both spectra use the same oscillator-mix time-domain buffer and periodic Blackman window. The custom FFT uses Chromium's 1/N magnitude scaling; native smoothing is disabled for comparison.</p>
+            </div>
+            <div class="compare-metrics">
+              <div><span>Peak frequency</span><strong id="peakFreq">—</strong></div>
+              <div><span>Custom FFT time</span><strong id="fftTime">—</strong></div>
+              <div><span>Frequency resolution</span><strong id="resolution">—</strong></div>
+            </div>
+          </section>
+          <footer>Learning note: the FFT converts a block of time samples into frequency bins. Bin spacing is sampleRate ÷ FFT size. The highest representable frequency is the Nyquist frequency (sampleRate ÷ 2).</footer>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

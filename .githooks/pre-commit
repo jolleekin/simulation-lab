@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+deno lint
+deno check

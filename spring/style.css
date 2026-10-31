@@ -1,0 +1,267 @@
+#app {
+  display: grid;
+  gap: 18px;
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 24px;
+}
+
+.spring-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.panel {
+  border: 1px solid #1c304b;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(16, 32, 53, .95), rgba(10, 23, 39,
+    .96));
+  box-shadow: 0 10px 30px #00000012;
+}
+
+.controls {
+  height: max-content;
+  padding: 20px;
+}
+
+.controls section + section {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #243852;
+}
+
+.section-title {
+  margin: 0 0 13px;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 7px;
+  margin: 13px 0;
+  color: #b9c9e0;
+  font-size: 12px;
+}
+
+.field span {
+  color: #7f95b2;
+}
+
+.field input {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+  padding: 9px;
+  border: 1px solid #304765;
+  border-radius: 8px;
+  outline: none;
+  background: #0b1b2e;
+  color: #e6efff;
+  font-size: 12px;
+}
+
+.field input:focus {
+  border-color: #70a8ff;
+}
+
+.field input[aria-invalid="true"] {
+  border-color: #ff6b73;
+}
+
+.hint {
+  margin: 10px 0 0;
+  color: #879bb7;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.equation {
+  margin: 0;
+  color: #dce9fc;
+  font-size: 17px;
+  font-variant-numeric: lining-nums;
+}
+
+.exact-solution-title {
+  margin-top: 16px;
+}
+
+.damping-regime {
+  margin: 0 0 6px;
+  color: #70a8ff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.exact-solution {
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.content {
+  display: grid;
+  min-width: 0;
+  gap: 16px;
+  align-content: start;
+}
+
+.chart-panel {
+  padding: 17px 18px;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.panel-heading h2 {
+  margin: 0 0 5px;
+  font-size: 14px;
+  letter-spacing: -.01em;
+}
+
+.panel-heading p {
+  margin: 0;
+  color: #91a5c2;
+  font-size: 12px;
+}
+
+.pill {
+  padding: 5px 8px;
+  border: 1px solid #2b405b;
+  border-radius: 999px;
+  color: #8ea4c2;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.playback-controls {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+
+.playback-controls button {
+  padding: 7px 12px;
+  border: 1px solid #304765;
+  border-radius: 7px;
+  background: #10243b;
+  color: #dce9fc;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.playback-controls button:hover:not(:disabled) {
+  border-color: #70a8ff;
+}
+
+.playback-controls button:disabled {
+  cursor: default;
+  opacity: .5;
+}
+
+#systemCanvas,
+#plotCanvas {
+  display: block;
+  width: 100%;
+  border: 1px solid #243b58;
+  border-radius: 10px;
+  background: #0b1727;
+}
+
+#systemCanvas {
+  height: 245px;
+}
+
+#plotCanvas {
+  height: min(390px, 55vh);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: #a7b8d1;
+  font-size: 10px;
+}
+
+.legend span::before {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 5px;
+  border-radius: 50%;
+  content: "";
+  vertical-align: 1px;
+}
+
+.legend-exact::before {
+  background: #ff7185;
+}
+
+.legend-euler::before {
+  background: #f5c46b;
+}
+
+.legend-rk4::before {
+  background: #70a8ff;
+}
+
+@media (max-width: 900px) {
+  .spring-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .controls section + section {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  #app {
+    margin: 16px auto;
+    padding: 0 12px;
+  }
+
+  .controls {
+    display: block;
+    padding: 15px;
+  }
+
+  .controls section + section {
+    margin-top: 17px;
+    padding-top: 16px;
+    border-top: 1px solid #243852;
+  }
+
+  .chart-panel {
+    padding: 13px;
+  }
+
+  .panel-heading {
+    flex-direction: column;
+  }
+
+  #systemCanvas {
+    height: 210px;
+  }
+
+  #plotCanvas {
+    height: 280px;
+  }
+}

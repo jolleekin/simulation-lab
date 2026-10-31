@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07101d" />
+    <title>Spring Simulation · Simulation Lab</title>
+  </head>
+  <body>
+    <main id="app">
+      <div class="spring-layout">
+        <aside class="panel controls" aria-label="Spring parameters">
+          <section>
+            <h2 class="section-title">System parameters</h2>
+            <div id="parameterFields"></div>
+            <p class="hint" id="parameterHint" role="status" aria-live="polite">
+              Change a value to update the diagram and solver comparison.
+            </p>
+          </section>
+          <section>
+            <h2 class="section-title">Equation of motion</h2>
+            <p class="equation">m x″ + c x′ + k x = 0</p>
+            <p class="hint">Starting from x(0) = 1 m and v(0) = 0 m/s.</p>
+            <h3 class="section-title exact-solution-title">Exact solution</h3>
+            <p class="damping-regime" id="dampingRegime" role="status"></p>
+            <p class="equation exact-solution" id="exactSolution"></p>
+            <p
+              class="hint">Closed-form solution; displayed coefficients are rounded.</p>
+          </section>
+        </aside>
+        <div class="content">
+          <section class="panel chart-panel system-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Mass–spring–damper system</h2>
+                <p>Motion is shown relative to the equilibrium position.</p>
+              </div>
+              <span class="pill" id="systemTime">t = 0.00 s</span>
+            </div>
+            <div class="playback-controls" role="group"
+              aria-label="Simulation playback">
+              <button id="playPauseButton" type="button">Play</button>
+              <button id="stopButton" type="button" disabled>Stop</button>
+            </div>
+            <canvas
+              id="systemCanvas"
+              role="img"
+              aria-label="Animated diagram of a mass connected to a spring and damper"
+            ></canvas>
+          </section>
+          <section class="panel chart-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Position over time</h2>
+                <p>Playback ends when motion settles or at 40 s; undamped systems show up to 10 cycles.</p>
+              </div>
+              <div class="legend">
+                <span class="legend-exact">Analytical</span>
+                <span class="legend-euler">Euler</span>
+                <span class="legend-rk4">RK4</span>
+              </div>
+            </div>
+            <canvas
+              id="plotCanvas"
+              role="img"
+              aria-label="Chart comparing analytical, Euler, and RK4 displacement over time"
+            ></canvas>
+          </section>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
